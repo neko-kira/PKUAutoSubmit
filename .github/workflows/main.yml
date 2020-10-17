@@ -33,6 +33,5 @@ jobs:
       - run: |
           pip install selenium
           python main.py -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
-          time.sleep(30)
           python main2.py -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
 
