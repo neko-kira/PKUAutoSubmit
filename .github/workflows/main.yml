@@ -33,10 +33,18 @@ jobs:
           pip install selenium
           python main.py -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
           python main2.py -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
+          
       - name: My backup step
-        if: ${{ failure() }}
-        uses: yakumioto/serverchan-action@v1
+        if: ${{ failure() }}        
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
         with:
-          key: ${{ secrets.sckey }}
-          text: {备案失败}
-          desp: {备案失败} 
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+          sckey: ${{ secrets.sckey }}
+      - run: |
+          pip install requests
+          python wechat.py
+          
+
+
