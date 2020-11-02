@@ -35,9 +35,9 @@ jobs:
           python main2.py -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
       - name: My backup step
         if: ${{ failure() }}
+        uses: ./
         with:
           sckey: ${{ secrets.sckey }}
-        uses: ./
       - run: |
           pip install requests
           python wechat.py
