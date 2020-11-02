@@ -33,7 +33,6 @@ jobs:
           pip install selenium
           python main.py -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
           python main2.py -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
-          
       - name: My backup step
         if: ${{ failure() }}        
       - uses: actions/checkout@v2
