@@ -37,6 +37,7 @@ jobs:
         if: ${{ failure() }}
         with:
           sckey: ${{ secrets.sckey }}
-      run: |
+        uses: ./
+      - run: |
           pip install requests
           python wechat.py
